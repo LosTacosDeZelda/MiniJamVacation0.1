@@ -28,6 +28,8 @@ public class PlayerCtrl : EntityUtil
 {
     public InputAction move;
     public InputAction interact;
+    AudioSource audioSrc;
+    public AudioClip quack;
 
     // Enabling input
     private void OnEnable()  { move.Enable();  interact.Enable();  }
@@ -40,7 +42,9 @@ public class PlayerCtrl : EntityUtil
         //sets up method
         interact.started += ctx => callInteract();
         //temporary ignore rayCast layer
-        gameObject.layer = 2; 
+        gameObject.layer = 2;
+        //cache audiosource component
+        audioSrc = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,7 +58,8 @@ public class PlayerCtrl : EntityUtil
     // Used to interact when a specific button is pressed, calls "interact" method in other object.
     void callInteract()
     {
-        //code to make the duck quak
+        //code to make the duck quack
+        audioSrc.PlayOneShot(quack,0.25f);
         print("Quack");
     }
 }
