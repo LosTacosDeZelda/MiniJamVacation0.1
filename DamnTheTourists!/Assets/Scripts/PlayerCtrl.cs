@@ -26,10 +26,12 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerCtrl : EntityUtil
 {
+    public float quakScareDistance;
     public InputAction move;
     public InputAction interact;
     AudioSource audioSrc;
     public AudioClip quack;
+    touristAI[] tourists;
 
     // Enabling input
     private void OnEnable()  { move.Enable();  interact.Enable();  }
@@ -46,6 +48,7 @@ public class PlayerCtrl : EntityUtil
         gameObject.layer = 2;
         //cache audiosource component
         audioSrc = GetComponent<AudioSource>();
+        tourists = FindObjectsOfType<touristAI>();
     }
 
     // Update is called once per frame
@@ -63,6 +66,20 @@ public class PlayerCtrl : EntityUtil
         audioSrc.PlayOneShot(quack,0.25f);
         print("Quack");
         //checks area to see closest enemy
-        
+        tourists = FindObjectsOfType<touristAI>();
+        //if there are enemies
+        if (tourists[0] != null)
+        {
+            //finds all tourist in scare area and makes them leave
+            for (int i = 0; i < tourists.Length; i++) 
+            {
+                float touristDistance = Vector3.Distance(transform.position, tourists[i].transform.position);
+                if (touristDistance < quakScareDistance)
+                {
+                    tourists[i].scared();
+                }
+            }
+        }
     }
+
 }

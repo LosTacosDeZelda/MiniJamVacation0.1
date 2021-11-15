@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class touristAI : EntityUtil
 {
+    public Transform babyChickPrefab;
     public float chickCaptureDistance;
     public float chickCaptureTime;
     babyAI closestBaby;
@@ -13,6 +14,7 @@ public class touristAI : EntityUtil
     babyAI[] babbies;
     float despawnDistance = 1f;
     float timePassed = 0;
+    bool hasKidnappedBaby;
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +72,7 @@ public class touristAI : EntityUtil
             if (timePassed > chickCaptureTime)
             {
                 closestBaby.chickenCapture();
+                hasKidnappedBaby = true;
                 stateSave = 1;
             }
         }
@@ -92,9 +95,24 @@ public class touristAI : EntityUtil
         if ( Vector3.Distance(transform.position, locationV3) < despawnDistance)
         {
             Destroy(gameObject);
+            //if they kidnapped a child then it decrements your lives left
+            if (hasKidnappedBaby)
+            {
+                print("point lost");
+            }
+        }
+    }
+
+    public void scared()
+    {
+        stateSave = 1;
+        //if they kidnapped a babby make it drop
+        if (hasKidnappedBaby)
+        {
+            Instantiate(babyChickPrefab, transform);
         }
     }
 
     //TODO: If he has the babby and is quacked at he drops the child
-    
+
 }
