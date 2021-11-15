@@ -76,6 +76,7 @@ public class touristAI : EntityUtil
             if (timePassed > chickCaptureTime)
             {
                 closestBaby.chickenCapture();
+                closestBaby.transform.parent = transform;
                 hasKidnappedBaby = true;
                 stateSave = 1;
             }
@@ -114,7 +115,8 @@ public class touristAI : EntityUtil
         if (hasKidnappedBaby)
         {
             hasKidnappedBaby = false;
-            Instantiate(babyChickPrefab, transform);
+            closestBaby.transform.parent = null;
+            closestBaby.disableFollowParent();
         }
     }
 

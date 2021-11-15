@@ -17,7 +17,7 @@ public class babyAI : EntityUtil
     Vector2 walkPoint;
     int stateSave = 0;
     float stateLengthT = 0;
-    string[] states = {"uninitialised", "walkingToPoint", "followingParent"};
+    string[] states = {"uninitialised", "walkingToPoint", "followingParent", "captured"};
     PlayerCtrl player;
 
     // Start is called before the first frame update
@@ -44,6 +44,10 @@ public class babyAI : EntityUtil
         else if (states[stateSave] == "followingParent")
         {
             updateFollowParent();
+        }
+        else if (states[stateSave] == "captured")
+        {
+            transform.position = transform.parent.position;
         }
 
         if (states[stateSave] != "followingParent") 
@@ -83,7 +87,7 @@ public class babyAI : EntityUtil
         }
     }
 
-    void disableFollowParent()
+    public void disableFollowParent()
     {
         stateSave = 0;
     }
@@ -97,6 +101,7 @@ public class babyAI : EntityUtil
     
     public void chickenCapture()
     {
-        Destroy(gameObject);
+        stateSave = 3;
+        moveEntity(new Vector2(0, 0));
     }
 }
