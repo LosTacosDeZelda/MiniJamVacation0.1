@@ -5,11 +5,14 @@ using UnityEngine;
 public class touristAI : EntityUtil
 {
     public float chickCaptureDistance;
+    public float chickCaptureTime;
     babyAI closestBaby;
     Vector3 spawnLocation;
     int stateSave = 0;
     string[] states = {"goingToChick", "leaving", "capturingChick"};
     babyAI[] babbies;
+    float despawnDistance = 1f;
+    float timePassed = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -27,16 +30,18 @@ public class touristAI : EntityUtil
         //if else statemachine, between movingToPoint, findingNewPoint
         if (states[stateSave] == "goingToChick")
         {
-            updateGoingToChick();
+            //refreshes the list of babbies
+            babbies = FindObjectsOfType<babyAI>();
+            if (babbies[0] != null)
+            {
+                updateGoingToChick();
+            }
         }
         else if (states[stateSave] == "leaving")
         {
-            
+            updateLeaving();
         }
-        else if (states[stateSave] == "capturingChick")
-        {
-            
-        }
+
     }
 
     void updateGoingToChick()
@@ -58,11 +63,38 @@ public class touristAI : EntityUtil
         Vector2 thisPosition = new Vector2(transform.position.x, transform.position.y);
         moveEntity(closestBabyPos - thisPosition);
 
-        //if we are in the distance we can capture the chick
+        //if we are in the distance we can capture the chick, updates the capturing timer
         if ( Vector3.Distance(transform.position, closestBaby.transform.position) < chickCaptureDistance)
         {
-            stateSave = 2;
+            timePassed += Time.deltaTime;
+            if (timePassed > chickCaptureTime)
+            {
+                closestBaby.chickenCapture();
+                stateSave = 1;
+            }
+        }
+        else
+        {
+            timePassed = 0;
         }
     }
 
+    void updateLeaving()
+    {
+        //walks towards exit
+        Vector2 location = new Vector2(spawnLocation.x, spawnLocation.y);
+        Vector2 thisPosition = new Vector2(transform.position.x, transform.position.y);
+        moveEntity(location - thisPosition);
+
+        //if close to exit despawn character
+        //if we are in the distance we can capture the chick, updates the capturing timer
+        Vector3 locationV3 = new Vector3(spawnLocation.x, spawnLocation.y, transform.position.z);
+        if ( Vector3.Distance(transform.position, locationV3) < despawnDistance)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    //TODO: If he has the babby and is quacked at he drops the child
+    
 }

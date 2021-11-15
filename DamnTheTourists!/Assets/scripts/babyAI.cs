@@ -95,4 +95,8 @@ public class babyAI : EntityUtil
         moveEntity(playerV2 - thisPosition);
     }
     
+    public void chickenCapture()
+    {
+        Destroy(gameObject);
+    }
 }

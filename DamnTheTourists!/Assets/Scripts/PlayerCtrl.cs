@@ -62,5 +62,7 @@ public class PlayerCtrl : EntityUtil
         //code to make the duck quack
         audioSrc.PlayOneShot(quack,0.25f);
         print("Quack");
+        //checks area to see closest enemy
+        
     }
 }
