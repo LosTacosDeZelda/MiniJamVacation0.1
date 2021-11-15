@@ -181,6 +181,8 @@ MonoBehaviour:
   speed: 3
   strengthOfRot: 100
   interactionDistance: 2
+  babyChickPrefab: {fileID: 2455474231166839196, guid: 8182b32adc408254f98f88507fe2ef96,
+    type: 3}
   chickCaptureDistance: 2
   chickCaptureTime: 1
 --- !u!61 &1510822432151758000

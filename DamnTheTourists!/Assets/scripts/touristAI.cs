@@ -113,6 +113,7 @@ public class touristAI : EntityUtil
         //if they kidnapped a babby make it drop
         if (hasKidnappedBaby)
         {
+            hasKidnappedBaby = false;
             Instantiate(babyChickPrefab, transform);
         }
     }
