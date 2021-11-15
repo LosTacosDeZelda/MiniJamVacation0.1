@@ -47,7 +47,7 @@ public class babyAI : EntityUtil
         }
         else if (states[stateSave] == "captured")
         {
-            transform.position = transform.parent.position;
+            
         }
 
         if (states[stateSave] != "followingParent") 
@@ -87,7 +87,7 @@ public class babyAI : EntityUtil
         }
     }
 
-    public void disableFollowParent()
+    void disableFollowParent()
     {
         stateSave = 0;
     }
@@ -103,5 +103,12 @@ public class babyAI : EntityUtil
     {
         stateSave = 3;
         moveEntity(new Vector2(0, 0));
+        rb.isKinematic  = true;
+    }
+
+    public void releaseChild()
+    {
+        stateSave = 0;
+        rb.isKinematic  = false;
     }
 }

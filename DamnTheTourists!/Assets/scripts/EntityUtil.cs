@@ -11,7 +11,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EntityUtil : MonoBehaviour
 {
-    Rigidbody2D rb;
+    protected Rigidbody2D rb;
     public float speed = 5;
     public float strengthOfRot = 100;
     public float interactionDistance = 2;

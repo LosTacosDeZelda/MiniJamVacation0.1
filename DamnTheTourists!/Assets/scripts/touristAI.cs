@@ -116,7 +116,8 @@ public class touristAI : EntityUtil
         {
             hasKidnappedBaby = false;
             closestBaby.transform.parent = null;
-            closestBaby.disableFollowParent();
+            closestBaby.releaseChild();
+            FindObjectsOfType<GameManager>()[0].LoseAChick();
         }
     }
 
