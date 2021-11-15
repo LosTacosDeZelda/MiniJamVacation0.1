@@ -42,6 +42,7 @@ public class PlayerCtrl : EntityUtil
         //sets up method
         interact.started += ctx => callInteract();
         //temporary ignore rayCast layer
+        turnOffset = -90;
         gameObject.layer = 2;
         //cache audiosource component
         audioSrc = GetComponent<AudioSource>();
