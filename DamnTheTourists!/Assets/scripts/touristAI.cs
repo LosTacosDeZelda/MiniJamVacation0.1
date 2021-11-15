@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class touristAI : EntityUtil
 {
@@ -16,17 +17,18 @@ public class touristAI : EntityUtil
     float timePassed = 0;
     bool hasKidnappedBaby;
 
+    public GameObject aaaaahEffect;
+    public GameObject worldCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
+        worldCanvas = GameObject.Find("WorldCanvas");
         entityStart();
         spawnLocation = transform.position;
         turnOffset = 90;
         babbies = FindObjectsOfType<babyAI>();
-        
-           closestBaby = babbies[0];
-        
-        
+        closestBaby = babbies[0];
     }
 
 
@@ -104,12 +106,16 @@ public class touristAI : EntityUtil
             if (hasKidnappedBaby)
             {
                 print("point lost");
+                FindObjectsOfType<GameManager>()[0].LoseAChick();
             }
         }
     }
 
     public void scared()
     {
+        //Instantiate text effect above tourist
+        Instantiate(aaaaahEffect, new Vector3(gameObject.transform.position.x + 3,gameObject.transform.position.y,0), Quaternion.identity, gameObject.transform);
+
         stateSave = 1;
         //if they kidnapped a babby make it drop
         if (hasKidnappedBaby)
@@ -117,7 +123,7 @@ public class touristAI : EntityUtil
             hasKidnappedBaby = false;
             closestBaby.transform.parent = null;
             closestBaby.releaseChild();
-            FindObjectsOfType<GameManager>()[0].LoseAChick();
+            
         }
     }
 

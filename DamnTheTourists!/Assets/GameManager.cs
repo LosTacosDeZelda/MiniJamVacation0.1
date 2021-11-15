@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     float stopwatch = 0;
     public TMP_Text stopwatchText;
     public TMP_Text chicksKidnapped;
-    public int nbOfChicksKidnapped = 0;
+    int nbOfChicksKidnapped = 0;
 
     [Header("Chick Variables")]
     public GameObject chickPrefab;
@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public float touristMaxSpawnTime = 8f;
     public GameObject[] tourists;
     public Transform[] spawnPoints;
+
+    public TMP_Text scoreText;
 
     private void Awake()
     {
@@ -55,24 +57,46 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        stopwatch += Time.deltaTime;
-
-        if (stopwatch > 59)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            if (stopwatch % 60 == 0)
+            stopwatch += Time.deltaTime;
+
+            if (stopwatch > 59)
             {
-                stopwatchText.text = "Time : " + (Mathf.RoundToInt(stopwatch) / 60).ToString() + "min ";
+                if (stopwatch % 60 == 0)
+                {
+                    stopwatchText.text = "Time : " + (Mathf.RoundToInt(stopwatch) / 60).ToString() + "min ";
+                }
+                else
+                {
+                    stopwatchText.text = "Time : " + (Mathf.RoundToInt(stopwatch) / 60).ToString() + "min " + Mathf.RoundToInt(stopwatch % 60).ToString() + " sec";
+                }
+
             }
             else
             {
-                stopwatchText.text = "Time : " + (Mathf.RoundToInt(stopwatch) / 60).ToString() + "min " + Mathf.RoundToInt(stopwatch % 60).ToString() + " sec";
+                stopwatchText.text = "Time : " + Mathf.RoundToInt(stopwatch).ToString() + " sec";
             }
-           
         }
-        else
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            stopwatchText.text = "Time : " + Mathf.RoundToInt(stopwatch).ToString() + " sec";
+            if (scoreText == null)
+            {
+                scoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TMP_Text>();
+            }
+
+            if (nbOfChicksKidnapped < 3)
+            {
+                //You managed to save most of of chicks ! Congrats !
+                scoreText.text = "You managed to save most of of chicks ! Congrats !";
+            }
+            else
+            {
+                //You lost... The tourists fled with your chicks...
+                scoreText.text = "You lost... The tourists fled with your chicks...";
+            }
         }
+        
         
     }
 
@@ -94,5 +118,10 @@ public class GameManager : MonoBehaviour
     {
         //The game is over, load endscene
         SceneManager.LoadScene(2);
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

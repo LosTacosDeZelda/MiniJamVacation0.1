@@ -151,6 +151,9 @@ MonoBehaviour:
     type: 3}
   chickCaptureDistance: 4
   chickCaptureTime: 0
+  aaaaahEffect: {fileID: 3929799277017132177, guid: 46f3ff12a84c9f74ca51abf237ee1071,
+    type: 3}
+  worldCanvas: {fileID: 0}
 --- !u!1 &6660157857734458904
 GameObject:
   m_ObjectHideFlags: 0

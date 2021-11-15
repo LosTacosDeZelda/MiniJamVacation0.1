@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UImanager : MonoBehaviour
 {
+    public GameObject HowToPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +23,11 @@ public class UImanager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void HowTo()
+    public void HowToToggle()
     {
         //TODO : if howto panel isnt activated, activate it. If it is, deactivate it
+        HowToPanel.SetActive(!HowToPanel.activeInHierarchy);
+        
     }
 
     public void QuitGame()
