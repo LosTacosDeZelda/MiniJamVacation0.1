@@ -271,6 +271,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1510822432151758007, guid: 7d5ec95e8c15057428bd60215b973573,
+        type: 3}
+      propertyPath: babyChickPrefab
+      value: 
+      objectReference: {fileID: 2455474231166839196, guid: 8182b32adc408254f98f88507fe2ef96,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d5ec95e8c15057428bd60215b973573, type: 3}
 --- !u!1001 &2455474231596660323
@@ -403,6 +409,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570873368490038229, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
+        type: 3}
+      propertyPath: quakScareDistance
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8570873368490038231, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
         type: 3}

@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Tourists Variables")]
     public int nbOfTouristsAtStart;
+    public float touristMinSpawnTime = 3f;
+    public float touristMaxSpawnTime = 8f;
     public GameObject[] tourists;
     public Transform[] spawnPoints;
 
@@ -27,9 +29,17 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < nbOfChicksAtStart; i++)
         {
-            Instantiate(chickPrefab, new Vector3(Random.Range(-34, 34), Random.Range(-20, 15), 0), Quaternion.identity);
+            Instantiate(chickPrefab, new Vector3(Random.Range(-7.24f, 7.43f), Random.Range(5.491206f, -5.89f), 0), Quaternion.identity);
         }
+        
+        spawnTourists();
 
+        chicksKidnapped.text = "Chicks Kidnapped : 0";
+    }
+
+    // Start is called before the first frame update
+    void spawnTourists()
+    {
         for (int i = 0; i < nbOfTouristsAtStart; i++)
         {
             int randTouristIndex = Random.Range(0, tourists.Length);
@@ -38,13 +48,8 @@ public class GameManager : MonoBehaviour
             Instantiate(tourists[randTouristIndex], spawnPoints[randSpawnPoint].position, Quaternion.identity);
         }
 
-        chicksKidnapped.text = "Chicks Kidnapped : 0";
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        nbOfTouristsAtStart += 1;
+        Invoke("spawnTourists", Random.Range(touristMinSpawnTime, touristMaxSpawnTime));
     }
 
     // Update is called once per frame

@@ -143,12 +143,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93662d04041d964092cb9a48675df5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 2.5
   strengthOfRot: 100
   interactionDistance: 2
   newPointDistance: 0.1
   parentFollowDist: 2
   walkingAreaB1: {x: -30, y: 15}
   walkingAreaB2: {x: 30, y: -15}
-  minTimeToFollow: 1
-  maxTimeToFollow: 3
+  minTimeToFollow: 8
+  maxTimeToFollow: 13
