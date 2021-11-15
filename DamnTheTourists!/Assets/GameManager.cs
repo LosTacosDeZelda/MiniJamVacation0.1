@@ -9,16 +9,28 @@ public class GameManager : MonoBehaviour
     float stopwatch = 0;
     public TMP_Text stopwatchText;
 
+    [Header("Chick Variables")]
+    public GameObject chickPrefab;
+    public int nbOfChicksAtStart;
+
+    [Header("Tourists Variables")]
+    public int nbOfTouristsAtStart;
+    public GameObject[] tourists;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i < nbOfChicksAtStart; i++)
+        {
+           Instantiate(chickPrefab, new Vector3(Random.Range(-34,34), Random.Range(-20, 15),0),Quaternion.identity);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        stopwatch +=  Time.deltaTime;
+        stopwatch += Time.deltaTime;
 
         if (stopwatch > 59)
         {
