@@ -21,8 +21,12 @@ public class touristAI : EntityUtil
         spawnLocation = transform.position;
         turnOffset = 90;
         babbies = FindObjectsOfType<babyAI>();
-        closestBaby =  babbies[0];
+        
+           closestBaby = babbies[0];
+        
+        
     }
+
 
     // Update is called once per frame
     void Update()

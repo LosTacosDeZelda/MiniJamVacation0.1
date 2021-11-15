@@ -16,15 +16,28 @@ public class GameManager : MonoBehaviour
     [Header("Tourists Variables")]
     public int nbOfTouristsAtStart;
     public GameObject[] tourists;
+    public Transform[] spawnPoints;
 
+    private void Awake()
+    {
+        for (int i = 0; i < nbOfChicksAtStart; i++)
+        {
+            Instantiate(chickPrefab, new Vector3(Random.Range(-34, 34), Random.Range(-20, 15), 0), Quaternion.identity);
+        }
+
+        for (int i = 0; i < nbOfTouristsAtStart; i++)
+        {
+            int randTouristIndex = Random.Range(0, tourists.Length);
+            int randSpawnPoint = Random.Range(0, spawnPoints.Length);
+
+            Instantiate(tourists[randTouristIndex], spawnPoints[randSpawnPoint].position, Quaternion.identity);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < nbOfChicksAtStart; i++)
-        {
-           Instantiate(chickPrefab, new Vector3(Random.Range(-34,34), Random.Range(-20, 15),0),Quaternion.identity);
-        }
+        
     }
 
     // Update is called once per frame
