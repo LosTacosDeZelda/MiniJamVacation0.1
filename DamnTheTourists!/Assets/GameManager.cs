@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     float stopwatch = 0;
     public TMP_Text stopwatchText;
+    public TMP_Text chicksKidnapped;
+    public int nbOfChicksKidnapped = 0;
 
     [Header("Chick Variables")]
     public GameObject chickPrefab;
@@ -20,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+
         for (int i = 0; i < nbOfChicksAtStart; i++)
         {
             Instantiate(chickPrefab, new Vector3(Random.Range(-34, 34), Random.Range(-20, 15), 0), Quaternion.identity);
@@ -64,8 +69,23 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void IncrementTime()
+    public void LoseAChick()
     {
+        if (nbOfChicksKidnapped < 3)
+        {
+            nbOfChicksKidnapped++;
+            chicksKidnapped.text = "Chicks Kidnapped : " + nbOfChicksKidnapped.ToString();
+        }
+        
+        if(nbOfChicksKidnapped == 3)
+        {
+            GameOver();
+        }
+    }
 
+    void GameOver()
+    {
+        //The game is over, load endscene
+        SceneManager.LoadScene(2);
     }
 }

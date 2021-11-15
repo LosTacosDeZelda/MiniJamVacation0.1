@@ -387,7 +387,7 @@ MonoBehaviour:
   chickPrefab: {fileID: 2455474231166839198, guid: 8182b32adc408254f98f88507fe2ef96,
     type: 3}
   nbOfChicksAtStart: 10
-  nbOfTouristsAtStart: 5
+  nbOfTouristsAtStart: 3
   tourists:
   - {fileID: 6660157856820080411, guid: f9368a41f65a85e40a906a64a63c4449, type: 3}
   - {fileID: 1705348073638352821, guid: 954f594f0d461aa4683474d3b3553602, type: 3}
