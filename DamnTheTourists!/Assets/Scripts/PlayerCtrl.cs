@@ -26,12 +26,24 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerCtrl : EntityUtil
 {
+    [Header("Controller variables")]
     public float quakScareDistance;
     public InputAction move;
     public InputAction interact;
     AudioSource audioSrc;
     public AudioClip quack;
     touristAI[] tourists;
+    
+    [Header("Animation Variables")]
+    public float headMoveSpeed = -2f;
+    public float headChangeTime = 1f;
+    public Transform head;
+    public float wingRotationTorque = -2f;
+    public float wingsChangeTime = 1f;
+    public Transform wing1;
+    public Transform wing2;
+    bool wingsOpen = false;
+    bool isWalking = false;
 
     // Enabling input
     private void OnEnable()  { move.Enable();  interact.Enable();  }
@@ -49,6 +61,7 @@ public class PlayerCtrl : EntityUtil
         //cache audiosource component
         audioSrc = GetComponent<AudioSource>();
         tourists = FindObjectsOfType<touristAI>();
+        Invoke("changeHeadMoveDirection", headChangeTime);
     }
 
     // Update is called once per frame
@@ -56,7 +69,11 @@ public class PlayerCtrl : EntityUtil
     {
         //Gets 2d vector for movement
         Vector2 moveInput = move.ReadValue<Vector2>();
+        isWalking = moveInput == new Vector2(0, 0) ? false : true;
         moveEntity(moveInput);
+        //animations
+        moveHead();
+        //moveWings();
     }
 
     // Used to interact when a specific button is pressed, calls "interact" method in other object.
@@ -80,6 +97,51 @@ public class PlayerCtrl : EntityUtil
                 }
             }
         }
+        //startMovingWings();
     }
 
+    //MOVES HEAD
+    void moveHead()
+    {
+        head.Translate((Vector3.up * Time.deltaTime) * headMoveSpeed, Space.Self);
+    }
+
+    void changeHeadMoveDirection()
+    {
+        headMoveSpeed = -headMoveSpeed;
+        Invoke("changeHeadMoveDirection", headChangeTime);
+    }
+
+    
+    /* MOVES WINGS
+    //starts the wings moving by allowiing the wings to turn, signalls to start closing the wings after a few seconds.
+    void startMovingWings()
+    {
+        wingsOpen = true;
+        Invoke("closeWings", wingsChangeTime);
+    }
+
+    //function allows the wings to rotate.
+    void moveWings()
+    {
+        if (wingsOpen)
+        {
+            wing1.Rotate(0, 0, wingRotationTorque, Space.Self);
+            wing2.Rotate(0, 0, wingRotationTorque, Space.Self);
+        }
+    }
+
+    //function makes the wings close back by reversing the torgue, before finnaly singalling to stop all movement in wings.
+    void closeWings()
+    {
+        wingRotationTorque = -wingRotationTorque;
+        Invoke("stopMovingWings", wingsChangeTime);
+    }
+
+    void stopMovingWings()
+    {
+        wingRotationTorque = -wingRotationTorque;
+        wingsOpen = false;
+    }
+    */
 }
