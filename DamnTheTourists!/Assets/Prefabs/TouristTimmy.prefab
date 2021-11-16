@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  strengthOfRot: 100
+  strengthOfRot: 200
   interactionDistance: 2
   babyChickPrefab: {fileID: 2455474231166839196, guid: 8182b32adc408254f98f88507fe2ef96,
     type: 3}

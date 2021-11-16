@@ -18,12 +18,15 @@ public class touristAI : EntityUtil
     bool hasKidnappedBaby;
 
     public GameObject aaaaahEffect;
+    SpriteRenderer mySr;
+
     public GameObject worldCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
         worldCanvas = GameObject.Find("WorldCanvas");
+        mySr = GetComponent<SpriteRenderer>();
         entityStart();
         spawnLocation = transform.position;
         turnOffset = 90;
@@ -77,6 +80,9 @@ public class touristAI : EntityUtil
             timePassed += Time.deltaTime;
             if (timePassed > chickCaptureTime)
             {
+                //The tourist turns red when it captures a chick
+                mySr.color = Color.red;
+
                 closestBaby.chickenCapture();
                 closestBaby.transform.parent = transform;
                 hasKidnappedBaby = true;
@@ -101,11 +107,15 @@ public class touristAI : EntityUtil
         Vector3 locationV3 = new Vector3(spawnLocation.x, spawnLocation.y, transform.position.z);
         if ( Vector3.Distance(transform.position, locationV3) < despawnDistance)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             //if they kidnapped a child then it decrements your lives left
             if (hasKidnappedBaby)
             {
+                //(Raphael)There is an error here, the next line is a quick fix
+                hasKidnappedBaby = false;
                 print("point lost");
+                //(Raphael)IMPORTANT : LoseAChick needs to be called EXACTLY one time each
+                //time a chick is lost to a tourist. Maybe I could do a Unity Event for this ? (delegate)
                 FindObjectsOfType<GameManager>()[0].LoseAChick();
             }
         }
@@ -113,6 +123,9 @@ public class touristAI : EntityUtil
 
     public void scared()
     {
+        //The tourist drops the chick, so it turns back white 
+        mySr.color = Color.white;
+
         //Instantiate text effect above tourist
         Instantiate(aaaaahEffect, new Vector3(gameObject.transform.position.x + 3,gameObject.transform.position.y,0), Quaternion.identity, gameObject.transform);
 

@@ -144,12 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20ecb8c365acda45af6ecd229da19ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.4
-  strengthOfRot: 100
+  speed: 1.5
+  strengthOfRot: 50
   interactionDistance: 2
   babyChickPrefab: {fileID: 2455474231166839196, guid: 8182b32adc408254f98f88507fe2ef96,
     type: 3}
-  chickCaptureDistance: 4
+  chickCaptureDistance: 2
   chickCaptureTime: 0
   aaaaahEffect: {fileID: 3929799277017132177, guid: 46f3ff12a84c9f74ca51abf237ee1071,
     type: 3}

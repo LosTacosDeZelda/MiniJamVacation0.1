@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 123583202}
   m_Layer: 0
   m_Name: GameObject (2)
-  m_TagString: Untagged
+  m_TagString: TouristSpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -383,27 +383,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d9a4c9a20dab74b9ea786e698a27d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopwatchSecs: 0
+  stopwatchMins: 0
   stopwatchText: {fileID: 2005314933}
   chicksKidnapped: {fileID: 401509895}
+  nbOfChicksKidnapped: 0
   chickPrefab: {fileID: 2455474231166839198, guid: 8182b32adc408254f98f88507fe2ef96,
     type: 3}
   nbOfChicksAtStart: 10
   nbOfTouristsAtStart: 3
   touristMinSpawnTime: 3
-  touristMaxSpawnTime: 8
+  touristMaxSpawnTime: 6
   tourists:
   - {fileID: 6660157856820080411, guid: f9368a41f65a85e40a906a64a63c4449, type: 3}
   - {fileID: 1705348073638352821, guid: 954f594f0d461aa4683474d3b3553602, type: 3}
   - {fileID: 1510822432151758002, guid: 7d5ec95e8c15057428bd60215b973573, type: 3}
-  spawnPoints:
-  - {fileID: 507315489}
-  - {fileID: 1988511386}
-  - {fileID: 123583201}
-  - {fileID: 814294784}
-  - {fileID: 1754562963}
-  - {fileID: 2122503994}
-  - {fileID: 466194428}
-  - {fileID: 546893351}
+  spawnPoints: []
   scoreText: {fileID: 0}
 --- !u!1 &401509893
 GameObject:
@@ -418,7 +413,7 @@ GameObject:
   - component: {fileID: 401509895}
   m_Layer: 5
   m_Name: ChicksKidnapped
-  m_TagString: Untagged
+  m_TagString: ChicksText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -439,8 +434,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 101.3, y: 133.5}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -229.3, y: 133.5}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &401509895
 MonoBehaviour:
@@ -551,7 +546,7 @@ GameObject:
   - component: {fileID: 466194429}
   m_Layer: 0
   m_Name: GameObject (7)
-  m_TagString: Untagged
+  m_TagString: TouristSpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -632,7 +627,7 @@ GameObject:
   - component: {fileID: 507315490}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: TouristSpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -887,7 +882,7 @@ GameObject:
   - component: {fileID: 546893352}
   m_Layer: 0
   m_Name: GameObject (8)
-  m_TagString: Untagged
+  m_TagString: TouristSpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1041,18 +1036,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &721176905 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8570873369433409785, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-    type: 3}
-  m_PrefabInstance: {fileID: 2049648809}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &778050429 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8570873368796639557, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-    type: 3}
-  m_PrefabInstance: {fileID: 2049648809}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &814294783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,7 +1048,7 @@ GameObject:
   - component: {fileID: 814294785}
   m_Layer: 0
   m_Name: GameObject (3)
-  m_TagString: Untagged
+  m_TagString: TouristSpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1277,7 +1260,7 @@ GameObject:
   - component: {fileID: 1754562964}
   m_Layer: 0
   m_Name: GameObject (4)
-  m_TagString: Untagged
+  m_TagString: TouristSpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1415,12 +1398,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0932f7b8de870b4d81502c29f1e6acc, type: 3}
---- !u!4 &1849755268 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8570873369735885359, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-    type: 3}
-  m_PrefabInstance: {fileID: 2049648809}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1862379891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1510,7 @@ GameObject:
   - component: {fileID: 1988511387}
   m_Layer: 0
   m_Name: GameObject (1)
-  m_TagString: Untagged
+  m_TagString: TouristSpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1614,8 +1591,8 @@ GameObject:
   - component: {fileID: 2005314934}
   - component: {fileID: 2005314933}
   m_Layer: 5
-  m_Name: Countdown
-  m_TagString: Untagged
+  m_Name: Stopwatch
+  m_TagString: StopwatchText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1636,8 +1613,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 195.3, y: 181}
-  m_SizeDelta: {x: 389.4, y: 50}
+  m_AnchoredPosition: {x: -153.8, y: 181}
+  m_SizeDelta: {x: 450, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2005314933
 MonoBehaviour:
@@ -1810,98 +1787,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8570873368490038229, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
         type: 3}
-      propertyPath: head
-      value: 
-      objectReference: {fileID: 1849755268}
-    - target: {fileID: 8570873368490038229, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
       propertyPath: speed
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873368490038229, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: wing1
-      value: 
-      objectReference: {fileID: 778050429}
-    - target: {fileID: 8570873368490038229, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: wing2
-      value: 
-      objectReference: {fileID: 721176905}
-    - target: {fileID: 8570873368490038229, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: headMoveSpeed
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873368490038229, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: headChangeTime
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873368490038229, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: wingsChangeTime
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8570873368490038229, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
         type: 3}
       propertyPath: quakScareDistance
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 8570873368490038229, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: wingRotationTorque
-      value: -0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 8570873368490038231, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
         type: 3}
       propertyPath: m_Name
       value: Goose
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873368796639557, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873368796639557, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873368796639557, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99933386
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873368796639557, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873368796639557, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873368796639557, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.03649547
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873368796639557, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -4.183
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873369433409785, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 8570873369433409785, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.29
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea12d0e2bd4fa68478c7f8c3a6b7e058, type: 3}
@@ -1923,7 +1820,7 @@ GameObject:
   - component: {fileID: 2122503995}
   m_Layer: 0
   m_Name: GameObject (5)
-  m_TagString: Untagged
+  m_TagString: TouristSpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
